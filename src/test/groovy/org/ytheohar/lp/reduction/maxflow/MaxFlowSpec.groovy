@@ -30,7 +30,7 @@ class MaxFlowSpec extends Specification {
 			def mf = MaxFlow.reduction()
 
 		when:
-			def lpi = mf.reduce(g)
+			def lpi = mf.mapToLP(g)
 			def o = lpi.objectiveFunction
 			def constraints = lpi.constraints
 	
@@ -74,7 +74,7 @@ class MaxFlowSpec extends Specification {
 			def mf = MaxFlow.reduction()
 
 		when:
-			def res = mf.reduceAndSolve(g)
+			def res = mf.reduce(g)
 			
 		then:
 			res.maxFlow == 6

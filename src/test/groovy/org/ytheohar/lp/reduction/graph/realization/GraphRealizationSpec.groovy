@@ -13,7 +13,7 @@ class GraphRealizationSpec extends Specification {
 		def gr = GraphRealization.reduction(false)
 
 		when:
-		def lpi = gr.reduce([2, 2, 2])
+		def lpi = gr.mapToLP([2, 2, 2])
 		
 		then:
 		lpi.objectiveFunction.coeffMap.size() == 0
@@ -34,7 +34,7 @@ class GraphRealizationSpec extends Specification {
 		def gr = GraphRealization.reduction(decisionVersion)
 
 		when:
-		def res = gr.reduceAndSolve([2, 2, 2])
+		def res = gr.reduce([2, 2, 2])
 
 		then:
 		res == expected
@@ -51,7 +51,7 @@ class GraphRealizationSpec extends Specification {
 		def gr = GraphRealization.reduction(decisionVersion)
 
 		when:
-		def res = gr.reduceAndSolve([2, 2, 1])
+		def res = gr.reduce([2, 2, 1])
 
 		then:
 		res == expected
